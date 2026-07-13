@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SMS Spam Detector</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#F7F5FF;
+
+padding:40px;
+
+}
+
+.container{
+
+max-width:850px;
+
+margin:auto;
+
+background:white;
+
+border-radius:16px;
+
+padding:35px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.header{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+.header h1{
+
+color:#5B21B6;
+
+font-size:32px;
+
+font-weight:700;
+
+margin-bottom:10px;
+
+}
+
+.header p{
+
+color:#6B7280;
+
+font-size:15px;
+
+}
+
+.label{
+
+font-weight:600;
+
+margin-bottom:10px;
+
+color:#374151;
+
+display:block;
+
+}
+
+textarea{
+
+width:100%;
+
+height:170px;
+
+padding:15px;
+
+font-size:15px;
+
+border-radius:12px;
+
+border:1.8px solid #D8B4FE;
+
+outline:none;
+
+resize:none;
+
+transition:.3s;
+
+}
+
+textarea:focus{
+
+border-color:#7C3AED;
+
+box-shadow:0 0 0 4px rgba(124,58,237,.12);
+
+}
+
+button{
+
+margin-top:20px;
+
+width:100%;
+
+padding:14px;
+
+background:#7C3AED;
+
+color:white;
+
+border:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#6D28D9;
+
+}
+
+.result{
+
+margin-top:25px;
+
+padding:18px;
+
+border-radius:12px;
+
+font-size:17px;
+
+font-weight:600;
+
+}
+
+.safe{
+
+background:#ECFDF5;
+
+border-left:5px solid #10B981;
+
+color:#065F46;
+
+}
+
+.spam{
+
+background:#FEF2F2;
+
+border-left:5px solid #EF4444;
+
+color:#991B1B;
+
+}
+
+.history{
+
+margin-top:40px;
+
+}
+
+.history h2{
+
+margin-bottom:18px;
+
+color:#5B21B6;
+
+font-size:22px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+overflow:hidden;
+
+border-radius:12px;
+
+}
+
+th{
+
+background:#7C3AED;
+
+color:white;
+
+padding:14px;
+
+font-weight:500;
+
+}
+
+td{
+
+padding:14px;
+
+border-bottom:1px solid #EEEEEE;
+
+font-size:14px;
+
+}
+
+tr:hover{
+
+background:#F5F3FF;
+
+}
+
+.footer{
+
+margin-top:35px;
+
+padding-top:20px;
+
+border-top:1px solid #E5E7EB;
+
+text-align:center;
+
+font-size:14px;
+
+color:#6B7280;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h1>SMS Spam Detector</h1>
+
+<p>
+Detect whether an SMS is spam or not.
+</p>
+
+</div>
+
+<form action="/predict" method="POST">
+
+<label class="label">
+
+Enter SMS Message
+
+</label>
+
+<textarea
+
+name="message"
+
+placeholder="Example: Congratulations! You have won ₹50,000..."
+
+required></textarea>
+
+<button type="submit">
+
+Predict Message
+
+</button>
+
+</form>
+
+{% if prediction %}
+
+    {% if "Spam" in prediction %}
+
+        <div class="result spam">
+
+            <strong>Prediction Result</strong>
+
+            <br><br>
+
+            {{ prediction }}
+
+        </div>
+
+    {% else %}
+
+        <div class="result safe">
+
+            <strong>Prediction Result</strong>
+
+            <br><br>
+
+            {{ prediction }}
+
+        </div>
+
+    {% endif %}
+
+{% endif %}
+
+
+
+{% if history %}
+
+<div class="history">
+
+<h2>Prediction History</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th width="75%">Message</th>
+
+<th width="25%">Prediction</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in history %}
+
+<tr>
+
+<td>{{ item[0] }}</td>
+
+<td>
+
+{% if "Spam" in item[1] %}
+
+<span style="
+background:#FEE2E2;
+color:#B91C1C;
+padding:6px 12px;
+border-radius:20px;
+font-weight:600;
+">
+
+Spam
+
+</span>
+
+{% else %}
+
+<span style="
+background:#DCFCE7;
+color:#166534;
+padding:6px 12px;
+border-radius:20px;
+font-weight:600;
+">
+
+Not Spam
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endif %}
+
+
+
+<div class="footer">
+
+Built with ❤️ using
+
+<b>Python</b> •
+<b>Flask</b> •
+<b>Scikit-Learn</b> •
+<b>Naive Bayes</b>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
