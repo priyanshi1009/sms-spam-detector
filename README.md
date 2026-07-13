@@ -1,36 +1,16 @@
 # 📧 SMS Spam Detector
 
-A simple Machine Learning web application that detects whether an SMS message is **Spam** or **Not Spam** using the **Naive Bayes** algorithm.
+A Machine Learning based web application that classifies SMS messages as **Spam** or **Not Spam** using the **Naive Bayes** algorithm.
 
-The project is developed using **Python, Flask, Scikit-learn, HTML and CSS**. It provides a clean web interface where users can enter any SMS message and instantly receive the prediction along with the confidence score.
-
----
-
-## 📸 Screenshots
-
-### 🏠 Home Page
-
-<p align="center">
-  <img src="screenshots/home.png" alt="Home Page" width="850">
-</p>
-
----
-
-### 📊 Prediction Result
-
-<p align="center">
-  <img src="screenshots/prediction.png" alt="Prediction Result" width="850">
-</p>
+The application is built using **Python, Flask, Scikit-learn, HTML and CSS**. It allows users to enter an SMS message and instantly receive a prediction along with the confidence score. It also stores recent predictions so that users can review previous results.
 
 ---
 
 # 📖 About the Project
 
-Spam messages are one of the most common forms of unwanted communication. This project aims to automatically classify SMS messages as **Spam** or **Not Spam** using Machine Learning.
+Spam messages are one of the most common forms of unwanted communication. Identifying them manually is not always easy, especially when large numbers of messages are received.
 
-The application uses the **Naive Bayes Classifier**, which is widely used for text classification problems. Before prediction, the message is cleaned and converted into numerical features using **CountVectorizer**. The trained model then predicts the category of the message and displays the result with a confidence score.
-
-The application also keeps a history of recent predictions, making it easier to review previous results.
+This project uses a Machine Learning model to automatically classify SMS messages as **Spam** or **Not Spam**. Before prediction, the message is cleaned and converted into numerical features using **CountVectorizer**. The trained **Naive Bayes** model then predicts the category of the message and displays the result on a simple web interface.
 
 ---
 
@@ -40,7 +20,7 @@ The application also keeps a history of recent predictions, making it easier to 
 - Displays prediction confidence score
 - Stores recent prediction history
 - Clear History option
-- Simple and responsive web interface
+- Simple and responsive user interface
 - Fast prediction using a trained Machine Learning model
 
 ---
@@ -52,12 +32,38 @@ The application also keeps a history of recent predictions, making it easier to 
 | Python | Programming Language |
 | Flask | Backend Web Framework |
 | Scikit-learn | Machine Learning |
-| Pandas | Data Handling |
+| Pandas | Data Processing |
 | NumPy | Numerical Operations |
-| Joblib | Model Saving & Loading |
+| Joblib | Saving & Loading Model |
 | HTML5 | Frontend |
 | CSS3 | Styling |
 | Naive Bayes | Classification Algorithm |
+
+---
+
+# 📸 Project Screenshots
+
+## 🏠 Home Page
+
+<p align="center">
+<img src="screenshots/home.png" alt="Home Page" width="900">
+</p>
+
+---
+
+## 📊 Prediction Result
+
+<p align="center">
+<img src="screenshots/prediction.png" alt="Prediction Result" width="900">
+</p>
+
+---
+
+## 📜 Prediction History
+
+<p align="center">
+<img src="screenshots/history.png" alt="Prediction History" width="900">
+</p>
 
 ---
 
@@ -75,7 +81,8 @@ sms-spam-detector
 │
 ├── screenshots/
 │   ├── home.png
-│   └── prediction.png
+│   ├── prediction.png
+│   └── history.png
 │
 ├── templates/
 │   └── index.html
@@ -90,14 +97,14 @@ sms-spam-detector
 
 ---
 
-# ⚙️ How It Works
+# ⚙️ Working of the Project
 
 1. The user enters an SMS message.
-2. The message is preprocessed by removing unnecessary characters.
+2. The message is cleaned during preprocessing.
 3. The cleaned text is converted into numerical features using **CountVectorizer**.
 4. The trained **Naive Bayes** model predicts whether the message is Spam or Not Spam.
 5. The prediction result and confidence score are displayed.
-6. The prediction is stored in the recent history section.
+6. The prediction is saved in the recent history section.
 
 ---
 
@@ -109,7 +116,7 @@ sms-spam-detector
 git clone https://github.com/priyanshi1009/sms-spam-detector.git
 ```
 
-### Move into the Project Folder
+### Move to the Project Folder
 
 ```bash
 cd sms-spam-detector
@@ -143,7 +150,7 @@ python app.py
 
 Open your browser and visit:
 
-```
+```text
 http://127.0.0.1:5000
 ```
 
@@ -164,37 +171,37 @@ http://127.0.0.1:5000
 
 | SMS Message | Prediction |
 |-------------|------------|
-| Hi, are you coming to college today? | ✅ Not Spam |
-| Your OTP is 458271. Do not share it. | ✅ Not Spam |
+| Hi, are you coming to college tomorrow? | ✅ Not Spam |
+| Your OTP is 482731. Do not share it with anyone. | ✅ Not Spam |
 | Congratulations! You have won ₹50,000. | 🚫 Spam |
 | FREE entry into our lucky draw! | 🚫 Spam |
 
 ---
 
-# 🔮 Future Scope
+# 🔮 Future Improvements
 
-The project can be improved further by adding:
+Some features that can be added in the future include:
 
-- Email spam detection
-- Support for multiple languages
-- User authentication
-- Database integration
-- Cloud deployment
-- Mobile-friendly interface
-- Deep Learning based text classification
+- Email Spam Detection
+- Multi-language Support
+- User Authentication
+- Database Integration
+- Cloud Deployment
+- Mobile Responsive Design
+- Deep Learning based Text Classification
 
 ---
 
 # 📚 Learning Outcomes
 
-While working on this project, I learned about:
+This project helped me understand:
 
 - Text preprocessing
 - Feature extraction using CountVectorizer
 - Naive Bayes Classification
-- Model training and evaluation
+- Machine Learning workflow
 - Flask web development
-- Git and GitHub workflow
+- Git and GitHub
 - Building an end-to-end Machine Learning application
 
 ---
@@ -205,18 +212,18 @@ While working on this project, I learned about:
 
 B.Tech Student
 
-GitHub Profile:  
-🔗 **https://github.com/priyanshi1009**
+**GitHub Profile:**  
+https://github.com/priyanshi1009
 
-Project Repository:  
-🔗 **https://github.com/priyanshi1009/sms-spam-detector**
-
----
-
-## 🙏 Acknowledgement
-
-The SMS Spam Collection Dataset used in this project is a publicly available dataset commonly used for text classification and spam detection tasks.
+**Project Repository:**  
+https://github.com/priyanshi1009/sms-spam-detector
 
 ---
 
-⭐ *Thank you for visiting this project!*
+# 🙏 Acknowledgement
+
+The SMS Spam Collection Dataset used in this project is a publicly available dataset that is widely used for learning and research in text classification.
+
+---
+
+⭐ Thank you for taking the time to explore this project.
